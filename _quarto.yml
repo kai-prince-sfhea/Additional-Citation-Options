@@ -1,0 +1,16 @@
+project:
+  title: "Additional Citation Options"
+  type: website
+
+filters:
+  - quarto
+  - additional-citation-options
+  
+format:
+  html: default
+  pdf: default
+  native: default
+
+bibliography: references.bib
+link-citations: false
+citeproc: false

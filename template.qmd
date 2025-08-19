@@ -1,0 +1,34 @@
+---
+title: "Additional-citation-options Example"
+filters:
+  - additional-citation-options
+---
+
+## Heading
+
+This filter adds additional options to citations.
+
+Here are the options provided by Quarto/Pandoc:
+
+- Narrative Citation: @bergelson_1996
+- Suppress Author: -@bergelson_1996
+- Add Locator: @bergelson_1996 [Section 1]
+- Parenthesised Citation: [@bergelson_1996]
+- Parenthesised Citation with Locator: [@bergelson_1996, Section 1]
+
+Here are the expanded options:
+
+- Remove Parentheses (Author Only): [@bergelson_1996]{.remove-paren}
+- No Parentheses: [@bergelson_1996]{.no-paren}
+
+The default options can be mixed and matched with the expanded options.
+
+Below is an example in using .no-paren:
+
+::: {#def-Density}
+## [[@bergelson_1996, Section 1]]{.no-paren}
+
+We call define *density of a subset $A\subseteq G$ with respect to a Følner sequence, $\Phi$,* as
+$$d_\Phi(A)=\lim_{N\rightarrow\infty}\frac{|\Phi_N\cap A|}{|\Phi_N|},$$
+if it exists.
+:::
