@@ -1,0 +1,15 @@
+Additional Citation Options
+Copyright 2025-2026 Kai Prince
+
+The current authored extension code is licensed under the Apache License,
+Version 2.0. See the adjacent LICENSE for the full terms. Material AI assistance
+is disclosed in the repository README.md.
+
+This installed package contains no bundled third-party runtime code, CSL,
+model or historical website assets. The repository's root NOTICE separately
+retains notices for generated assets in its old Git history; those assets and
+that history are not installed by this extension.
+
+The licence does not relicense third-party software, cited publications,
+citation styles, Quarto, Pandoc, or content supplied by users. These attribution
+notices are informational and do not modify the licence.

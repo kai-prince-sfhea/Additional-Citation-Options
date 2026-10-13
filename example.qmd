@@ -1,0 +1,39 @@
+---
+title: "Additional Citation Options"
+---
+
+## Ordinary citations
+
+Native citation syntax remains available:
+
+- Narrative: @bergelson_1996
+- Parenthetical: [@bergelson_1996]
+- Suppress author: [-@bergelson_1996]
+- Locator: [@bergelson_1996, sec. 1]
+
+## Extra presentation options
+
+- Remove the round delimiters: [@bergelson_1996]{.no-paren}
+- Remove the outer round delimiters of a parenthetical citation:
+  [[@bergelson_1996]]{.no-paren}
+- Remove the parenthesised segment of a narrative citation:
+  [@bergelson_1996]{.remove-paren}
+- Keep surrounding text and formatting:
+  [See **@bergelson_1996** for the discussion]{.no-paren}.
+
+These classes edit punctuation. They do not select CSL author/year fields.
+Applying `.remove-paren` to an entirely parenthetical citation removes all
+of its visible text; the bibliography entry remains.
+
+## Citation in a definition heading
+
+::: {#def-example}
+## [[@bergelson_1996, sec. 1]]{.no-paren}
+
+This is an authoring demonstration, not a mathematical definition.
+:::
+
+## References
+
+::: {#refs}
+:::

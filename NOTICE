@@ -1,0 +1,105 @@
+Additional Citation Options
+Copyright 2025-2026 Kai Prince
+
+The current authored source is licensed under the Apache License, Version 2.0.
+See LICENSE for the full terms. Material AI assistance is disclosed in the repository README.md.
+The licence does not relicense third-party software, cited publications, citation
+styles, Quarto, Pandoc, or content supplied by users.
+
+The current installable extension contains no bundled third-party runtime code.
+The following appendix concerns generated output retained in Git history at
+commit 201cb67c05a755412224827a0a02cf9c79ac53bf. Those _site assets have been
+removed from the current source tree and are not installed by the extension.
+This notice preserves known historical attributions prospectively; it does not
+change their original licences or assert earlier notice compliance.
+
+HISTORICAL MIT COMPONENTS
+
+Quarto output support JavaScript and related resources
+Copyright (c) 2020-2024 Posit Software, PBC
+https://github.com/quarto-dev/quarto-cli/blob/v1.7.34/COPYRIGHT
+
+Bootstrap 5.3.1
+Copyright (c) 2011-2023 The Bootstrap Authors
+https://github.com/twbs/bootstrap/blob/v5.3.1/LICENSE
+
+Bootstrap Icons 1.11.1 (including the font)
+Copyright (c) 2019-2023 The Bootstrap Authors
+https://github.com/twbs/icons/blob/v1.11.1/LICENSE
+
+clipboard.js 2.0.11; good-listener 1.2.2; select 1.1.2; delegate 3.2.0
+Copyright (c) Zeno Rocha
+https://github.com/zenorocha/clipboard.js/blob/v2.0.11/LICENSE
+https://github.com/zenorocha/good-listener/blob/v1.2.2/readme.md
+https://github.com/zenorocha/select/blob/v1.1.2/readme.md
+https://github.com/zenorocha/delegate/blob/v3.2.0/readme.md
+
+tiny-emitter 2.1.0 (within the Clipboard bundle)
+Copyright (c) 2017 Scott Corgan
+https://github.com/scottcorgan/tiny-emitter/blob/2.1.0/LICENSE
+
+AnchorJS 5.0.0
+Copyright (c) 2021 Bryan Braun (upstream LICENSE)
+Copyright (c) 2023 Bryan Braun (historical bundle header)
+https://github.com/bryanbraun/anchorjs/blob/5.0.0/LICENSE
+
+Popper 2.11.7
+Copyright (c) 2019 Federico Zivolo
+https://github.com/floating-ui/floating-ui/blob/v2.11.7/LICENSE.md
+
+Tippy 6.3.7
+Copyright (c) 2017-present atomiks
+https://github.com/atomiks/tippyjs/blob/v6.3.7/LICENSE
+
+Algolia Autocomplete JS 1.11.1 and its Algolia packages
+Copyright (c) 2015-present Algolia, Inc.
+Historical bundle attribution: Algolia, Inc. and contributors
+https://github.com/algolia/autocomplete/blob/v1.11.1/LICENSE
+
+Preact 10.13.2 (within the Autocomplete bundle)
+Copyright (c) 2015-present Jason Miller
+https://github.com/preactjs/preact/blob/10.13.2/LICENSE
+
+The following MIT permission and warranty terms apply to the MIT components
+identified above, retaining their respective copyright notices:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+HISTORICAL APACHE 2.0 COMPONENTS
+
+Fuse.js 6.6.2
+Copyright 2017 Kirollos Risk (upstream LICENSE)
+Copyright (c) 2022 Kiro Risk (historical bundle header)
+https://github.com/krisk/Fuse/blob/v6.6.2/LICENSE
+
+htm 3.1.1 (within the Autocomplete bundle)
+Copyright 2018 Google Inc.
+https://github.com/developit/htm/blob/3.1.1/LICENSE
+
+These Apache components are licensed under the Apache License, Version 2.0;
+you may not use them except in compliance with that licence. The complete
+unmodified licence text is supplied in LICENSE and is available at
+https://www.apache.org/licenses/LICENSE-2.0.
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+These attribution notices are informational and do not modify any licence.

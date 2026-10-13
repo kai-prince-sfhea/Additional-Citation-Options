@@ -1,16 +1,16 @@
 project:
   title: "Additional Citation Options"
   type: website
+  render:
+    - example.qmd
 
 filters:
-  - quarto
   - additional-citation-options
-  
+
 format:
   html: default
-  pdf: default
-  native: default
+  docx: default
 
 bibliography: references.bib
-link-citations: false
+link-citations: true
 citeproc: false

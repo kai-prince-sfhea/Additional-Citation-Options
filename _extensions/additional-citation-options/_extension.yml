@@ -1,7 +1,8 @@
-title: Additional-citation-options
+title: Additional Citation Options
 author: Kai Prince
-version: 1.0.0
-quarto-required: ">=1.7.0"
+version: 1.1.0-dev.3
+quarto-required: ">=1.11.5"
 contributes:
   filters:
-    - filter/additional-citation-options.lua
+    - path: filter/additional-citation-options.lua
+      at: post-render

@@ -1,6 +1,9 @@
-*.html
-*.pdf
-*_files/
-/.luarc.json
-
 /.quarto/
+/_site/
+/*_files/
+/site_libs/
+/*.html
+/*.pdf
+/*.docx
+/*.native
+/.luarc.json
