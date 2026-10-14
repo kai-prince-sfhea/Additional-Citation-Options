@@ -109,6 +109,12 @@ The initial contract covers body-block citations processed with Pandoc citeproc 
 
 An unknown or changed CSL style receives normal citeproc rendering and a warning; the additional presentation change is skipped. Numeric and note styles are outside the current contract. Other locales and customised styles need separate verification.
 
+The separately published Harvard Manchester CSL `0.1.0-dev.1` has changed since
+the pinned historical style above. It receives normal citeproc rendering and the
+style warning; this extension's punctuation transformations are skipped. Updating
+that CSL does not automatically expand this filter's admitted styles. A combined
+style/filter evaluation is required before claiming that newer pairing.
+
 Nested, multiple or unbalanced parenthesis pairs are treated as ambiguous and retain their normal presentation with a warning. A span combining both classes, or containing another marked span, is likewise left unchanged. These checks avoid guessing which parenthesised content the author intended to remove.
 
 Marked citations in title, abstract or other metadata receive normal citation processing, but no additional presentation transformation. This includes Quarto's HTML metadata copies. A warning identifies this unsupported context.

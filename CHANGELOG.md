@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased documentation review — 14 October 2026
+
+- Explain that the separately published Harvard Manchester CSL `0.1.0-dev.1`
+  follows the existing changed-style fallback: native citeproc rendering is
+  retained while the extra punctuation operation is skipped. The historical
+  fingerprint, runtime and admitted styles are unchanged.
+
 ## 1.1.0-dev.3 — experimental source update, 13 October 2026
 
 - Distribute a lean source update with Apache 2.0 licensing and scoped installed notices; retain the original public history and its third-party terms separately. Experimental source publication is separate from a tagged release and author/style/accessibility acceptance.
