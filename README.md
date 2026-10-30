@@ -2,7 +2,7 @@
 
 Control round parentheses in individual Pandoc citations using ordinary Markdown spans. The filter preserves citation keys and bibliography membership while changing the displayed citation text.
 
-**Experimental source version: 1.1.0-dev.5.** This retains the two punctuation operations, adds a finite exact APA style/locale admission, and lets authors explicitly select marked citations in the native abstract. Author review remains pending. The source update is separate from a tagged release, academic-style approval or general compatibility guarantee. See the [changelog](CHANGELOG.md) for changes and migration limits.
+**Experimental source version: 1.1.0-dev.6.** This retains the two punctuation operations, finite exact APA style/locale admission, and optional marked citations in the native abstract. It adds a small HTML bibliography stylesheet so long entries and URLs can wrap. Author review remains pending. The source update is separate from a tagged release, academic-style approval or general compatibility guarantee. See the [changelog](CHANGELOG.md) for changes and migration limits.
 
 The GitHub command below follows the experimental `main` branch; it does not
 select a supported tagged release. For a local checkout or extracted source,
@@ -52,6 +52,11 @@ author build command is required.
 | Bibliographic facts or locators | Your bibliography or native citation syntax. |
 | Whole-document referencing style | Native `csl` YAML; extra punctuation is available only for the [admitted styles](#supported-scope-and-fallbacks). |
 | Website fonts, colours and spacing | Your normal Quarto theme/CSS; this filter supplies no reader interface or theme. |
+
+For native HTML output, the filter supplies a scoped stylesheet that allows long
+bibliography entries and URLs to wrap within the available width. It preserves
+CSL text, hanging indents and spacing. Your theme remains responsible for fonts,
+colours and other layout choices; non-HTML outputs receive no added stylesheet.
 
 Put shared configuration in `_quarto.yml`, or in one document's front matter
 for a standalone QMD. In a project, keep `filters` and `citeproc: false` together;

@@ -1,6 +1,6 @@
 title: Additional Citation Options
 author: Kai Prince
-version: 1.1.0-dev.5
+version: 1.1.0-dev.6
 quarto-required: ">=1.11.5"
 contributes:
   filters:

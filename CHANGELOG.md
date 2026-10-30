@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0-dev.6 — local development, 30 October 2026
+
+- Allow long native HTML bibliography entries and URLs to wrap using a scoped
+  stylesheet. Preserve citation text, exact style admission, CSL bytes, hanging
+  indents and spacing; non-HTML outputs receive no added stylesheet.
+- Retain the prepared dev.5 fixtures and citation/metadata preservation checks.
+  Automated checks remain separate from human accessibility and style review.
+
 ## 1.1.0-dev.5 — local development, 26 October 2026
 
 - Add exact APA Style 7th edition content admission for explicitly selected

@@ -80,6 +80,15 @@ local function process(doc)
     return doc
   end
 
+  -- Keep native bibliography text and layout; allow long HTML entries to wrap.
+  if FORMAT == 'html' or FORMAT == 'html4' or FORMAT == 'html5' then
+    quarto.doc.add_html_dependency({
+      name = 'additional-citation-options-bibliography',
+      version = '1.1.0-dev.6',
+      stylesheets = {'bibliography.css'}
+    })
+  end
+
   -- Unmarked documents still need their normal full-document citation pass,
   -- but no style fingerprint or second metadata-marker traversal.
   if not marked then return pandoc.utils.citeproc(doc) end
