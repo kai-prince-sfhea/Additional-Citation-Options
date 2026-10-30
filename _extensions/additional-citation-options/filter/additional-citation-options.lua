@@ -1,6 +1,7 @@
 -- One full-document citation pass, followed by bounded presentation changes.
 local here = pandoc.path.directory(PANDOC_SCRIPT_FILE)
 local parentheses = dofile(pandoc.path.join({here, 'parentheses.lua'}))
+local metadata_contexts = dofile(pandoc.path.join({here, 'metadata-contexts.lua'}))
 
 local function mode(span)
   local no_paren, remove_paren = false, false
@@ -19,16 +20,29 @@ local function has_markers(doc)
   return found
 end
 
--- Deliberately narrow: default Chicago author-date, or the historical Harvard
--- Manchester fixture pinned in CITE-0. A filename/style title proves no semantics.
+-- Deliberately narrow: default Chicago author-date, or an explicitly tested
+-- Manchester fingerprint. A filename/style title proves no semantics. The
+-- fingerprint read is bounded; an unreadable/oversized style still receives its
+-- ordinary native citeproc rendering without these presentation operations.
+local MAX_STYLE_BYTES = 1024 * 1024
 local function supported_style(meta)
   if not meta.csl then return true end
   local file = io.open(pandoc.utils.stringify(meta.csl), 'rb')
   if not file then return false end
-  local text = file:read('*a')
+  local readable, text = pcall(file.read, file, MAX_STYLE_BYTES + 1)
   file:close()
+  if not readable or type(text) ~= 'string' or #text > MAX_STYLE_BYTES then
+    return false
+  end
   text = text:gsub('^\239\187\191', ''):gsub('\r\n', '\n'):match('^%s*(.-)%s*$')
-  return pandoc.utils.sha1(text) == '9448498c3f14eee61d08ac5907525b28a0e7e592'
+  local fingerprint = pandoc.utils.sha1(text)
+  if fingerprint == '9448498c3f14eee61d08ac5907525b28a0e7e592'
+    or fingerprint == '072d552a4962b427309db11857d606c3757eed1c'
+    or fingerprint == 'fdd267ae78543a9957576e2096257446d969986d' then return true end
+  -- Exact APA source and explicit candidate locales only; never a title heuristic.
+  if fingerprint ~= 'b587c36a6df5cd1ac323ee723cb87bc61238336b' then return false end
+  local language = meta.lang and pandoc.utils.stringify(meta.lang):lower() or ''
+  return language == 'en-gb' or language == 'en-us' or language == 'fr-fr'
 end
 
 local function process(doc)
@@ -46,6 +60,8 @@ local function process(doc)
     warning_count = warning_count + 1
     quarto.log.warning('additional-citation-options [' .. code .. ']: ' .. location .. ': ' .. message)
   end
+  local selected_metadata, option_error = metadata_contexts.selected(doc.meta)
+  if option_error then warn('configuration', option_error) end
   local marked = has_markers(doc)
   local method = quarto.doc.cite_method()
   local writer_method = PANDOC_WRITER_OPTIONS.cite_method
@@ -71,8 +87,8 @@ local function process(doc)
   local style_ok = supported_style(doc.meta)
   -- Metadata citations receive normal full-document processing, but no custom
   -- presentation. Walking this metadata-only document avoids touching the body.
-  if has_markers(pandoc.Pandoc({}, doc.meta)) then
-    warn('metadata', 'Presentation classes in metadata are unsupported. Remove the classes there or move the citation into the body; normal citation rendering is retained.', 'metadata')
+  if metadata_contexts.has_unselected_markers(doc.meta, selected_metadata, has_markers) then
+    warn('metadata', 'Only body citations and an explicitly selected native abstract support presentation classes. Other metadata and Quarto transport copies retain normal citation rendering; valid selected-abstract markup needs no change.', 'metadata')
   end
   local output = pandoc.utils.citeproc(doc)
   if not style_ok then
@@ -89,8 +105,9 @@ local function process(doc)
     ['an unsupported inline structure occurs inside the parentheses'] = 'parentheses-structure',
   }
   local span_count = 0
+  local metadata_location = nil
   local function metadata_warning()
-    warn('metadata', 'Presentation classes in metadata are unsupported. Remove the classes there or move the citation into the body; normal citation rendering is retained.', 'metadata')
+    warn('metadata', 'Only body citations and an explicitly selected native abstract support presentation classes. Other metadata and Quarto transport copies retain normal citation rendering; valid selected-abstract markup needs no change.', 'metadata')
   end
   local function transform_span(span)
     -- Quarto HTML carries metadata through hidden body envelopes for its final
@@ -105,7 +122,7 @@ local function process(doc)
     if not selected then return nil end
     span_count = span_count + 1
     local label = selected == 'conflict' and '.no-paren + .remove-paren' or '.' .. selected
-    local location = 'body marked span ' .. span_count .. ' (' .. label .. ')'
+    local location = (metadata_location or 'body') .. ' marked span ' .. span_count .. ' (' .. label .. ')'
     local nested = false
     span.content:walk({Span = function(child) nested = nested or mode(child) ~= nil end})
     if selected == 'conflict' or nested then
@@ -136,6 +153,9 @@ local function process(doc)
     end,
     Span = transform_span,
   })
+  metadata_location = 'metadata abstract'
+  output.meta = metadata_contexts.transform_abstract(output.meta, selected_metadata, transform_span)
+  metadata_location = nil
   if suppressed_count > 0 then
     quarto.log.warning('additional-citation-options [diagnostics-limit]: ' .. suppressed_count .. ' further diagnostics omitted after the first 20. Fix the reported spans and render again to locate remaining cases.')
   end

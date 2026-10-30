@@ -1,5 +1,39 @@
 # Changelog
 
+## 1.1.0-dev.5 — local development, 26 October 2026
+
+- Add exact APA Style 7th edition content admission for explicitly selected
+  en-GB/en-US/fr-FR. Unknown, changed, numeric/note styles and unadmitted APA
+  locales retain native citeproc presentation. No CSL file is bundled.
+- Add optional `metadata: [abstract]` under `additional-citation-options`,
+  preserving default body-only behavior and native title/social/other metadata.
+- Retain the unchanged punctuation helper, citation identities, bibliography
+  membership and one full-document native citeproc pass. Broader style/locale,
+  metadata, output, human and academic-style acceptance remain separate.
+
+## 1.1.0-dev.4 — local development, 25 October 2026
+
+- Admit the exact current Harvard Manchester CSL candidate `0.1.0-dev.1` for
+  the existing punctuation operations, alongside default Chicago author-date
+  and the pinned historical Manchester revision. A changed title or matching
+  filename never admits another style; no CSL file is distributed here.
+- Bound local style recognition to 1 MiB. Unreadable, oversized, changed or
+  unsupported styles retain normal native citeproc rendering and the existing
+  presentation diagnostic.
+- Verify the current pairing against fixed expected citation text and an
+  independent complete-document one-pass citeproc baseline, including native
+  HTML, reopened Word, bibliography and metadata preservation, and changed-style
+  refusal. The processing phase and explicit `citeproc: false` setup are
+  unchanged. These checks do not establish human style/accessibility acceptance
+  or a supported public release.
+
+## Local authoring documentation review — 23 October 2026
+
+- Add an immediate QMD first-use example and explain where per-citation,
+  bibliography, CSL and theme changes belong. Bring the current Manchester
+  CSL pairing limitation into the setup path. Runtime and style admission stay
+  unchanged.
+
 ## Unreleased documentation review — 14 October 2026
 
 - Explain that the separately published Harvard Manchester CSL `0.1.0-dev.1`

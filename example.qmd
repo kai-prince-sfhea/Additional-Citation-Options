@@ -2,7 +2,29 @@
 title: "Additional Citation Options"
 ---
 
-## Ordinary citations
+This tutorial starts with ordinary native citations, then changes one marked
+citation. The repository's `README.md` contains the installation and advanced syntax,
+style/processor, customisation and compatibility reference.
+
+## 1. Render the page
+
+From this checkout, run `quarto render example.qmd --to html` or use the editor's
+Render control. `_quarto.yml` already selects the local filter, bibliography and
+`citeproc: false`. In a separate project, install the extension, copy this file
+and `references.bib`, then apply the README's activation YAML. A GitHub
+installation uses the owner-qualified selector.
+
+## 2. Compare two presentations
+
+Ordinary narrative citation: @bergelson_1996.
+
+The same facts without round delimiters: [@bergelson_1996]{.no-paren}.
+
+The QMD for the second is `[@bergelson_1996]{.no-paren}`. Remove `.no-paren`,
+render again and check that normal punctuation returns. Both versions retain
+the citation key and bibliography entry. No browser script is involved.
+
+## 3. Add native citation features
 
 Native citation syntax remains available:
 
@@ -11,7 +33,7 @@ Native citation syntax remains available:
 - Suppress author: [-@bergelson_1996]
 - Locator: [@bergelson_1996, sec. 1]
 
-## Extra presentation options
+## 4. Explore the extra presentation options
 
 - Remove the round delimiters: [@bergelson_1996]{.no-paren}
 - Remove the outer round delimiters of a parenthetical citation:
@@ -25,6 +47,32 @@ These classes edit punctuation. They do not select CSL author/year fields.
 Applying `.remove-paren` to an entirely parenthetical citation removes all
 of its visible text; the bibliography entry remains.
 
+## 5. Optionally use a different admitted style
+
+The default example needs no downloaded CSL. For the exact separately downloaded
+APA file linked in the README, add ordinary `csl: apa.csl` and `lang: en-GB`
+(or the finite `en-US` / `fr-FR` cases). Keep the filter and
+`citeproc: false`. Changed styles and unadmitted locales retain native
+citations; no CSL or locale is inferred from its filename.
+
+## 6. Optionally apply the operation in an abstract
+
+After the body example works, add an abstract and this explicit setting to
+document/project YAML, replacing the reference with one from your bibliography:
+
+```yaml
+additional-citation-options:
+  metadata: [abstract]
+abstract: |
+  A summary with [@bergelson_1996]{.no-paren}.
+```
+
+Render and inspect the summary. Remove the `metadata` option and rerender to
+restore native abstract punctuation; the body examples stay active. This also
+works when the body has no marked citation. Title/social/description metadata
+retain normal native output. Unknown styles and alternate processors keep the
+README's fallback. These controls do not approve citation facts or style quality.
+
 ## Citation in a definition heading
 
 ::: {#def-example}
@@ -32,6 +80,16 @@ of its visible text; the bibliography entry remains.
 
 This is an authoring demonstration, not a mathematical definition.
 :::
+
+## Next steps
+
+Use IDs from your own bibliography. Open `README.md` in the repository and consult
+its syntax reference for marked spans and supported scope before changing the
+CSL or processor. The exact current Manchester CSL is now admitted alongside
+the historical version and the default style. To try it, download the CSL file
+separately and use the README's ordinary `csl:` setting; no additional adapter
+switch is needed. Changed or customised styles keep their normal citations and
+skip these extra punctuation operations until separately verified.
 
 ## References
 
